@@ -35,149 +35,125 @@ const Navbar = () => {
   ];
 
   return (
-    <div className="w-full z-10 fixed top-0 left-0 right-0">
-      <nav className="bg-gradient-to-r from-black via-indigo-900 to-blue-900 text-white shadow-lg bg-opacity-95 backdrop-blur-md border-b border-white/10 animate-fade-in">
-        <div className="px-4 py-4">
-          <div className="flex items-center justify-between w-full">
-            {/* Logo */}
-            <Link href="/" className="flex items-center space-x-2 hover:opacity-80 transition-opacity">
-              <img
-                src="/whiteLogo.png"
-                alt="ExtendEase Logo"
-                className="h-8 w-auto"
-              />
-              <span className="hidden sm:inline font-semibold text-white text-lg tracking-tight drop-shadow-lg">ExtendEase</span>
-            </Link>
+    <div className="w-full z-50 fixed top-0 left-0 right-0 shadow-lg">
+      <nav className="bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 text-white backdrop-blur-md border-b border-yellow-500/20">
+        <div className="px-4 py-4 flex items-center justify-between">
+          {/* Logo */}
+          <Link href="/" className="flex items-center space-x-2 hover:opacity-80 transition-opacity">
+            <img
+              src="/goldLogo.png" // Replace with your jewelry logo
+              alt="Logo"
+              className="h-10 w-auto"
+            />
+            <span className="hidden sm:inline font-serif font-bold text-lg text-yellow-400 tracking-wide drop-shadow-md">
+              GoldRushX
+            </span>
+          </Link>
 
-            {/* Navigation Links (centered and grow) */}
-            <div className="hidden md:flex flex-1 items-center justify-center space-x-4">
+          {/* Desktop Links */}
+          <div className="hidden md:flex flex-1 justify-center space-x-6">
+            {navLinks.map((link) => (
+              <Link
+                key={link.label}
+                href={link.href}
+                className="font-medium text-gray-100 hover:text-yellow-400 transition-colors duration-200 hover:scale-105 transform"
+              >
+                {link.label}
+              </Link>
+            ))}
+          </div>
+
+          {/* Search + Auth */}
+          <div className="flex items-center space-x-3">
+            {/* Search */}
+            <div className="relative">
+              <button
+                onClick={() => {
+                  setShowSearch(prev => !prev);
+                  setTimeout(() => {
+                    const input = document.getElementById('navbar-search-input');
+                    if (input) input.focus();
+                  }, 50);
+                }}
+                className="text-gray-100 hover:text-yellow-400 transition-colors duration-200 p-1"
+              >
+                <FaSearch className="text-lg" />
+              </button>
+              {showSearch && (
+                <form onSubmit={handleSearch} className="absolute right-0 top-full mt-2 bg-gray-100 rounded-lg shadow-lg border border-yellow-400 p-2 flex items-center z-50">
+                  <FaSearch className="text-gray-400 text-sm mr-2" />
+                  <input
+                    id="navbar-search-input"
+                    type="text"
+                    placeholder="Search..."
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    className="bg-transparent focus:outline-none text-sm text-gray-800 placeholder-gray-500 flex-1"
+                  />
+                </form>
+              )}
+            </div>
+
+            {/* Auth */}
+            {isAuthenticated ? (
+              <>
+                <span className="text-sm font-medium">{user?.email}</span>
+                <button onClick={logout} className="text-sm font-medium hover:text-yellow-400 transition-colors duration-200">
+                  Logout
+                </button>
+              </>
+            ) : (
+              <>
+                <Link href="/login" className="text-sm font-medium hover:text-yellow-400 transition-colors duration-200">
+                  Sign In
+                </Link>
+                <Link href="/signup">
+                  <FaUserCircle className="text-2xl text-gray-100 hover:text-yellow-400 transition-colors duration-200" />
+                </Link>
+              </>
+            )}
+
+            {/* Mobile Menu */}
+            <button
+              onClick={toggleMobileMenu}
+              className="md:hidden p-2 rounded-md hover:bg-yellow-200/20 transition-colors duration-200"
+            >
+              {isMobileMenuOpen ? <FaTimes className="h-6 w-6" /> : <FaBars className="h-6 w-6" />}
+            </button>
+          </div>
+        </div>
+
+        {/* Mobile Menu */}
+        {isMobileMenuOpen && (
+          <div className="md:hidden bg-gray-900 border-t border-yellow-500/20">
+            <div className="px-4 pt-2 pb-3 space-y-1">
               {navLinks.map((link) => (
                 <Link
                   key={link.label}
                   href={link.href}
-                  className="hover:text-gray-300 transition-colors duration-200 text-xs font-medium hover:scale-105 transform"
+                  className="block px-3 py-2 rounded-md text-base font-medium text-gray-100 hover:text-yellow-400 hover:bg-gray-800/50 transition-colors duration-200"
+                  onClick={() => setIsMobileMenuOpen(false)}
                 >
                   {link.label}
                 </Link>
               ))}
-            </div>
 
-            {/* Search + Auth (right) */}
-            <div className="flex items-center space-x-3">
-              {/* Search Icon */}
-              <div className="relative">
-                <button
-                  type="button"
-                  className="text-white hover:text-gray-300 transition-colors duration-200 p-1 hover:scale-110 transform"
-                  aria-label="Search"
-                  style={{ position: 'relative', zIndex: 2 }}
-                  onClick={() => {
-                    setShowSearch((prev) => !prev);
-                    setTimeout(() => {
-                      const input = document.getElementById('navbar-search-input');
-                      if (input) input.focus();
-                    }, 50);
-                  }}
-                >
-                  <FaSearch className="text-lg" />
-                </button>
-                {showSearch && (
-                  <form onSubmit={handleSearch} className="bg-white/95 backdrop-blur-md rounded-lg shadow-lg p-2 min-w-[200px] border border-white/20 flex items-center absolute right-0 top-full mt-2 z-50">
-                    <FaSearch className="text-gray-500 text-sm mr-2" />
-                    <input
-                      id="navbar-search-input"
-                      type="text"
-                      placeholder="Search..."
-                      value={searchQuery}
-                      onChange={(e) => setSearchQuery(e.target.value)}
-                      className="bg-transparent focus:outline-none text-sm text-gray-800 placeholder:text-gray-500 flex-1"
-                      aria-label="Search"
-                      autoFocus
-                    />
-                  </form>
-                )}
-              </div>
-
-              {/* Auth Links */}
-              {isAuthenticated ? (
-                <>
-                  <span className="text-xs font-medium mr-2">{user?.email} ({user?.type})</span>
-                  <button
-                    onClick={logout}
-                    className="hover:text-gray-300 transition-colors duration-200 text-xs font-medium"
-                  >
-                    Logout
-                  </button>
-                </>
-              ) : (
-                <>
-                  <Link
-                    href="/login"
-                    className="hover:text-gray-300 transition-colors duration-200 text-xs font-medium hover:scale-105 transform"
-                  >
-                    Sign in
-                  </Link>
-                  <Link
-                    href="/signup"
-                    className="hover:text-gray-300 transition-colors duration-200 hover:scale-110 transform"
-                    aria-label="Sign up"
-                  >
-                    <FaUserCircle className="text-lg" />
-                  </Link>
-                </>
-              )}
-
-              {/* Mobile Menu Button */}
-              <button
-                onClick={toggleMobileMenu}
-                className="md:hidden p-2 rounded-md hover:bg-indigo-300/20 transition-colors duration-200 hover:scale-110 transform"
-                aria-label="Toggle mobile menu"
-              >
-                {isMobileMenuOpen ? (
-                  <FaTimes className="h-6 w-6" />
-                ) : (
-                  <FaBars className="h-6 w-6" />
-                )}
-              </button>
+              {/* Mobile Search */}
+              <form onSubmit={handleSearch} className="px-3 py-2">
+                <div className="flex items-center bg-gray-100 rounded-full px-3 py-2 border border-yellow-400">
+                  <FaSearch className="text-gray-400 text-sm" />
+                  <input
+                    type="text"
+                    placeholder="Search..."
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    className="ml-2 bg-transparent focus:outline-none text-sm text-gray-800 placeholder-gray-500 flex-1"
+                  />
+                </div>
+              </form>
             </div>
           </div>
-
-          {/* Mobile Menu */}
-          {isMobileMenuOpen && (
-            <div className="md:hidden">
-              <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-gradient-to-b from-black via-indigo-900 to-blue-900 mt-2 bg-opacity-95 backdrop-blur-md border-b border-white/10 animate-slide-down">
-                {navLinks.map((link) => (
-                                  <Link
-                  key={link.label}
-                  href={link.href}
-                  className="block px-3 py-2 rounded-md text-base font-medium hover:text-gray-300 hover:bg-indigo-300/20 transition-colors duration-200 hover:scale-105 transform"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                    {link.label}
-                  </Link>
-                ))}
-                <button className="w-full text-left px-3 py-2 rounded-md text-base font-medium bg-gray-800/50 hover:bg-gray-700/50 transition-colors duration-200 hover:scale-105 transform">
-                  Free Visual Studio
-                </button>
-
-                {/* Mobile Search */}
-                <form onSubmit={handleSearch} className="px-3 py-2">
-                  <div className="flex items-center bg-white/95 backdrop-blur-md rounded-full px-3 py-2 border border-white/20">
-                    <FaSearch className="text-gray-500 text-sm" />
-                    <input
-                      type="text"
-                      placeholder="Search..."
-                      value={searchQuery}
-                      onChange={(e) => setSearchQuery(e.target.value)}
-                      className="ml-2 bg-transparent focus:outline-none text-sm text-gray-800 placeholder:text-gray-500 flex-1"
-                      aria-label="Search"
-                    />
-                  </div>
-                </form>
-              </div>
-            </div>
-          )}
-        </div>
+        )}
       </nav>
     </div>
   );
