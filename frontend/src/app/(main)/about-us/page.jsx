@@ -26,97 +26,106 @@ const AboutUs = () => {
             transform: translateY(0);
           }
         }
-        
-        @keyframes fadeInLetter {
-          0% {
-            opacity: 0;
-            transform: translateY(20px) scale(0.8);
-          }
-          50% {
-            opacity: 0.5;
-            transform: translateY(10px) scale(0.9);
-          }
-          100% {
-            opacity: 1;
-            transform: translateY(0) scale(1);
-          }
-        }
       `}</style>
-      <div className="font-sans bg-gradient-to-br from-black via-indigo-900 to-blue-900 min-h-screen w-full relative overflow-hidden">
+      <div className="font-serif bg-gradient-to-br from-ivory-50 to-ivory-200 min-h-screen w-full relative overflow-hidden">
+        {/* ✅ Navbar removed here, keep it in layout.js */}
+
         {/* Content */}
         <div className="relative z-10">
           {/* Hero Section */}
-          <section className="relative py-20 px-6 sm:px-8 lg:px-12">
+          <section
+            className="relative py-20 px-6 sm:px-8 lg:px-12 bg-cover bg-center"
+            style={{
+              backgroundImage:
+                'url(https://images.indianexpress.com/2021/05/gold-jewellery_1200-Copy.jpg)',
+            }}
+          >
             <div className="max-w-7xl mx-auto">
-              <div className="text-center mb-16" style={{
-                opacity: isVisible ? 1 : 0,
-                transform: isVisible ? 'translateY(0)' : 'translateY(50px)',
-                transition: 'all 1s ease-out'
-              }}>
-                <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white mb-6 flex items-center justify-center gap-3 leading-none drop-shadow-lg">
-                  <img
-                    src="/sq.ico"
-                    alt="Logo"
-                    className="inline-block h-[1.0em] w-[1.0em] align-middle"
-                  />
-                  <span className="-ml-0.1">
-                    About <span className="text-indigo-200">ExtendEase</span>
-                  </span>
+              <div
+                className="text-center mb-16 bg-charcoal-900 bg-opacity-60 p-10 rounded-xl"
+                style={{
+                  opacity: isVisible ? 1 : 0,
+                  transform: isVisible
+                    ? 'translateY(0)'
+                    : 'translateY(50px)',
+                  transition: 'all 1s ease-out',
+                }}
+              >
+                <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 leading-none drop-shadow-lg">
+                  About <span className="text-gold-500">LUXE JEWELS</span>
                 </h1>
                 <p className="text-xl text-white max-w-4xl mx-auto leading-relaxed drop-shadow-md">
-                  Welcome to <strong className="text-indigo-200">ExtendEase</strong> – The VS Code Extensions Marketplace built 
-                  <strong className="text-indigo-200">by developers, for developers</strong>. Discover, share, and manage 
-                  Visual Studio Code extensions with ease.
+                  Founded in the heart of Lucknow in 2020,{' '}
+                  <strong className="text-gold-500">LUXE JEWELS</strong>{' '}
+                  blends timeless elegance with contemporary charm,
+                  crafting jewelry that celebrates individuality and
+                  sophistication.
                 </p>
               </div>
             </div>
           </section>
 
-          {/* Vision Section */}
-          <section className="py-16 px-6 sm:px-8 lg:px-12 bg-black/20 backdrop-blur-sm">
+          {/* Our Heritage Section */}
+          <section className="py-16 px-6 sm:px-8 lg:px-12 bg-ivory-50">
             <div className="max-w-7xl mx-auto">
               <div className="grid lg:grid-cols-2 gap-12 items-center">
-                <div style={{
-                  opacity: isVisible ? 1 : 0,
-                  transform: isVisible ? 'translateY(0)' : 'translateY(30px)',
-                  transition: 'all 1s ease-out 0.2s'
-                }}>
-                  <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6 drop-shadow-lg">
-                    <span className="text-indigo-200">Our</span> Vision
+                <div
+                  style={{
+                    opacity: isVisible ? 1 : 0,
+                    transform: isVisible
+                      ? 'translateY(0)'
+                      : 'translateY(30px)',
+                    transition: 'all 1s ease-out 0.2s',
+                  }}
+                >
+                  <h2 className="text-3xl sm:text-4xl font-bold text-charcoal-900 mb-6 drop-shadow-lg">
+                    Our <span className="text-gold-500">Heritage</span>
                   </h2>
-                  <p className="text-lg text-white mb-6 leading-relaxed">
-                    We envision effortless extension discovery for every developer. 
-                    <strong className="text-indigo-200">ExtendEase</strong> is building the future by creating:
+                  <p className="text-lg text-ivory-600 mb-6 leading-relaxed">
+                    Inspired by Lucknow’s rich cultural legacy, LUXE JEWELS
+                    was born in 2020 to redefine luxury jewelry. Our designs
+                    draw from the city’s artistry, blending traditional
+                    craftsmanship with modern elegance.
                   </p>
-                  <ul className="space-y-3 text-white">
+                  <ul className="space-y-3 text-ivory-600">
                     <li className="flex items-start">
-                      <span className="text-indigo-200 mr-3 mt-1">•</span>
-                      A <em>curated ecosystem</em> where quality extensions rise to the top through community-driven ratings and reviews
+                      <span className="text-gold-500 mr-3 mt-1">•</span>
+                      <em>Handcrafted Excellence</em>: Each piece is
+                      meticulously crafted by skilled artisans.
                     </li>
                     <li className="flex items-start">
-                      <span className="text-indigo-200 mr-3 mt-1">•</span>
-                      An <em>intelligent discovery platform</em> that learns from your coding patterns and suggests the perfect extensions
+                      <span className="text-gold-500 mr-3 mt-1">•</span>
+                      <em>Cultural Inspiration</em>: Designs rooted in
+                      Lucknow’s heritage, with a contemporary twist.
                     </li>
                     <li className="flex items-start">
-                      <span className="text-indigo-200 mr-3 mt-1">•</span>
-                      A <em>collaborative space</em> where developers share insights, feedback, and build better tools together
-                    </li>
-                    <li className="flex items-start">
-                      <span className="text-indigo-200 mr-3 mt-1">•</span>
-                      A <em>seamless experience</em> from discovery to installation, making your development workflow faster and more efficient
+                      <span className="text-gold-500 mr-3 mt-1">•</span>
+                      <em>Timeless Beauty</em>: Jewelry that becomes cherished
+                      heirlooms for generations.
                     </li>
                   </ul>
                 </div>
-                <div className="bg-gradient-to-br from-indigo-500/20 to-blue-500/20 backdrop-blur-sm border border-indigo-500/30 rounded-2xl p-8" style={{
-                  opacity: isVisible ? 1 : 0,
-                  transform: isVisible ? 'translateY(0)' : 'translateY(30px)',
-                  transition: 'all 1s ease-out 0.4s'
-                }}>
-                  <div className="text-center">
-                    <div className="text-6xl mb-4">💻</div>
-                    <h3 className="text-2xl font-bold text-white mb-4 drop-shadow-lg">Built for Developers</h3>
-                    <p className="text-white">
-                      A platform that understands the needs of modern developers and provides the tools they need to succeed.
+                <div
+                  className="bg-gradient-to-br from-gold-500/20 to-ivory-200/20 border border-gold-500/30 rounded-2xl p-8 overflow-hidden"
+                  style={{
+                    opacity: isVisible ? 1 : 0,
+                    transform: isVisible
+                      ? 'translateY(0)'
+                      : 'translateY(30px)',
+                    transition: 'all 1s ease-out 0.4s',
+                  }}
+                >
+                  <img
+                    src="https://www.krishnajewellers.com/blog/wp-content/uploads/2021/12/Buy-Gold-Choker-Designs.jpg"
+                    alt="Craftsmanship"
+                    className="w-full h-64 object-cover rounded-lg"
+                  />
+                  <div className="text-center mt-4">
+                    <h3 className="text-2xl font-bold text-charcoal-900 mb-2 drop-shadow-lg">
+                      Artisan Legacy
+                    </h3>
+                    <p className="text-ivory-600">
+                      Every piece tells a story of craftsmanship and heritage.
                     </p>
                   </div>
                 </div>
@@ -125,256 +134,249 @@ const AboutUs = () => {
           </section>
 
           {/* What We Offer Section */}
-          <section className="py-16 px-6 sm:px-8 lg:px-12 bg-black/10">
+          <section className="py-16 px-6 sm:px-8 lg:px-12 bg-white">
             <div className="max-w-7xl mx-auto">
-              <div className="text-center mb-16" style={{
-                opacity: isVisible ? 1 : 0,
-                transform: isVisible ? 'translateY(0)' : 'translateY(30px)',
-                transition: 'all 1s ease-out 0.6s'
-              }}>
-                <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6 drop-shadow-lg">
-                  🔧 What We Offer
+              <div
+                className="text-center mb-16"
+                style={{
+                  opacity: isVisible ? 1 : 0,
+                  transform: isVisible
+                    ? 'translateY(0)'
+                    : 'translateY(30px)',
+                  transition: 'all 1s ease-out 0.6s',
+                }}
+              >
+                <h2 className="text-3xl sm:text-4xl font-bold text-charcoal-900 mb-6 drop-shadow-lg">
+                  Our <span className="text-gold-500">Promise</span>
                 </h2>
                 <div className="relative max-w-3xl mx-auto mb-10">
                   <div className="flex justify-center mb-4">
-                    <span className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-indigo-500/20 backdrop-blur-sm border border-indigo-500/30 shadow-lg">
-                      <svg className="w-8 h-8 text-indigo-200" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    <span className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-gold-500/20 border border-gold-500/30 shadow-lg">
+                      <svg
+                        className="w-8 h-8 text-gold-500"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M5 13l4 4L19 7"
+                        />
                       </svg>
                     </span>
                   </div>
-                  <p className="text-xl text-white bg-black/40 backdrop-blur-sm border border-indigo-500/30 rounded-2xl shadow-lg px-8 py-6 leading-relaxed font-medium">
-                    <span className="text-indigo-200 font-semibold">ExtendEase</span> helps you discover and manage VS Code extensions with smart filters and clear organization. Spend less time searching, more time building.
+                  <p className="text-xl text-ivory-600 bg-ivory-100 border border-gold-500/30 rounded-2xl shadow-lg px-8 py-6 leading-relaxed font-medium">
+                    <span className="text-gold-500 font-semibold">
+                      LUXE JEWELS
+                    </span>{' '}
+                    is committed to delivering exceptional quality,
+                    personalized service, and timeless designs that elevate
+                    every moment.
                   </p>
                 </div>
               </div>
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {/* Feature Cards */}
-                <div className="bg-black/20 backdrop-blur-sm border border-indigo-500/30 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:bg-black/30" style={{
-                  opacity: isVisible ? 1 : 0,
-                  transform: isVisible ? 'translateY(0)' : 'translateY(30px)',
-                  transition: 'all 1s ease-out 0.8s'
-                }}>
-                  <div className="text-3xl mb-4">🔍</div>
-                  <h3 className="text-xl font-bold text-white mb-3 drop-shadow-lg">Advanced Search & Filtering</h3>
-                  <p className="text-white">
-                    Quickly locate extensions by category, technology, rating, or keyword with our powerful search engine.
+                <div
+                  className="bg-ivory-50 border border-gold-500/30 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300"
+                  style={{
+                    opacity: isVisible ? 1 : 0,
+                    transform: isVisible
+                      ? 'translateY(0)'
+                      : 'translateY(30px)',
+                    transition: 'all 1s ease-out 0.8s',
+                  }}
+                >
+                  <img
+                    src="https://cdn0.weddingwire.in/vendor/1675/3_2/1280/jpg/26239263-10159814299310301-3345016161906752395-n_15_11675.jpeg"
+                    alt="Quality"
+                    className="w-full h-40 object-cover rounded-lg mb-4"
+                  />
+                  <h3 className="text-xl font-bold text-charcoal-900 mb-3 drop-shadow-lg">
+                    Unmatched Quality
+                  </h3>
+                  <p className="text-ivory-600">
+                    Sourcing the finest gems and metals for enduring brilliance.
                   </p>
                 </div>
-
-                <div className="bg-black/20 backdrop-blur-sm border border-indigo-500/30 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:bg-black/30" style={{
-                  opacity: isVisible ? 1 : 0,
-                  transform: isVisible ? 'translateY(0)' : 'translateY(30px)',
-                  transition: 'all 1s ease-out 1.0s'
-                }}>
-                  <div className="text-3xl mb-4">👤</div>
-                  <h3 className="text-xl font-bold text-white mb-3 drop-shadow-lg">Personalized Dashboards</h3>
-                  <p className="text-white">
-                    Tailored spaces for developers, publishers, and admins to manage their activities efficiently.
+                <div
+                  className="bg-ivory-50 border border-gold-500/30 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300"
+                  style={{
+                    opacity: isVisible ? 1 : 0,
+                    transform: isVisible
+                      ? 'translateY(0)'
+                      : 'translateY(30px)',
+                    transition: 'all 1s ease-out 1.0s',
+                  }}
+                >
+                  <img
+                    src="https://reetifashions.com/wp-content/uploads/2019/09/RF19_TD_10.jpeg"
+                    alt="Customization"
+                    className="w-full h-40 object-cover rounded-lg mb-4"
+                  />
+                  <h3 className="text-xl font-bold text-charcoal-900 mb-3 drop-shadow-lg">
+                    Personalized Designs
+                  </h3>
+                  <p className="text-ivory-600">
+                    Custom creations tailored to your unique style and story.
                   </p>
                 </div>
-
-                <div className="bg-black/20 backdrop-blur-sm border border-indigo-500/30 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:bg-black/30" style={{
-                  opacity: isVisible ? 1 : 0,
-                  transform: isVisible ? 'translateY(0)' : 'translateY(30px)',
-                  transition: 'all 1s ease-out 1.2s'
-                }}>
-                  <div className="text-3xl mb-4">⭐</div>
-                  <h3 className="text-xl font-bold text-white mb-3 drop-shadow-lg">Ratings & Reviews</h3>
-                  <p className="text-white">
-                    Community-driven feedback to highlight the best tools and help you make informed decisions.
-                  </p>
-                </div>
-
-                <div className="bg-black/20 backdrop-blur-sm border border-indigo-500/30 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:bg-black/30" style={{
-                  opacity: isVisible ? 1 : 0,
-                  transform: isVisible ? 'translateY(0)' : 'translateY(30px)',
-                  transition: 'all 1s ease-out 1.4s'
-                }}>
-                  <div className="text-3xl mb-4">📦</div>
-                  <h3 className="text-xl font-bold text-white mb-3 drop-shadow-lg">One-Click VS Code Integration</h3>
-                  <p className="text-white">
-                    Use our vscode: URI scheme to install extensions directly into your editor with a single click.
-                  </p>
-                </div>
-
-                <div className="bg-black/20 backdrop-blur-sm border border-indigo-500/30 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:bg-black/30" style={{
-                  opacity: isVisible ? 1 : 0,
-                  transform: isVisible ? 'translateY(0)' : 'translateY(30px)',
-                  transition: 'all 1s ease-out 1.6s'
-                }}>
-                  <div className="text-3xl mb-4">🔐</div>
-                  <h3 className="text-xl font-bold text-white mb-3 drop-shadow-lg">Secure Authentication</h3>
-                  <p className="text-white">
-                    JWT-based login and role-based access keep your data safe and your experience smooth.
-                  </p>
-                </div>
-
-                <div className="bg-black/20 backdrop-blur-sm border border-indigo-500/30 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:bg-black/30" style={{
-                  opacity: isVisible ? 1 : 0,
-                  transform: isVisible ? 'translateY(0)' : 'translateY(30px)',
-                  transition: 'all 1s ease-out 1.8s'
-                }}>
-                  <div className="text-3xl mb-4">🚀</div>
-                  <h3 className="text-xl font-bold text-white mb-3 drop-shadow-lg">High Performance</h3>
-                  <p className="text-white">
-                    Built with modern technologies for fast, responsive, and reliable performance.
+                <div
+                  className="bg-ivory-50 border border-gold-500/30 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300"
+                  style={{
+                    opacity: isVisible ? 1 : 0,
+                    transform: isVisible
+                      ? 'translateY(0)'
+                      : 'translateY(30px)',
+                    transition: 'all 1s ease-out 1.2s',
+                  }}
+                >
+                  <img
+                    src="https://cdn.yehaindia.com/wp-content/uploads/2020/06/Jewellery-1.jpg"
+                    alt="Service"
+                    className="w-full h-40 object-cover rounded-lg mb-4"
+                  />
+                  <h3 className="text-xl font-bold text-charcoal-900 mb-3 drop-shadow-lg">
+                    Exceptional Service
+                  </h3>
+                  <p className="text-ivory-600">
+                    Dedicated support to make your experience seamless.
                   </p>
                 </div>
               </div>
             </div>
           </section>
 
-          {/* Community Section */}
-          <section className="py-16 px-6 sm:px-8 lg:px-12 bg-black/20 backdrop-blur-sm">
+          {/* Our Commitment Section */}
+          <section className="py-16 px-6 sm:px-8 lg:px-12 bg-ivory-100">
             <div className="max-w-7xl mx-auto">
               <div className="grid lg:grid-cols-2 gap-12 items-center">
-                <div className="bg-gradient-to-br from-blue-500/20 to-indigo-500/20 backdrop-blur-sm border border-blue-500/30 rounded-2xl p-8" style={{
-                  opacity: isVisible ? 1 : 0,
-                  transform: isVisible ? 'translateY(0)' : 'translateY(30px)',
-                  transition: 'all 1s ease-out 2.0s'
-                }}>
-                  <div className="text-center">
-                    <div className="text-6xl mb-4">🤝</div>
-                    <h3 className="text-2xl font-bold text-white mb-4 drop-shadow-lg">Join Our Community</h3>
-                    <p className="text-white">
-                      Connect with fellow developers, share your extensions, and discover amazing tools.
+                <div
+                  className="bg-gradient-to-br from-gold-500/20 to-ivory-200/20 border border-gold-500/30 rounded-2xl p-8 overflow-hidden"
+                  style={{
+                    opacity: isVisible ? 1 : 0,
+                    transform: isVisible
+                      ? 'translateY(0)'
+                      : 'translateY(30px)',
+                    transition: 'all 1s ease-out 1.4s',
+                  }}
+                >
+                  <img
+                    src="http://2.bp.blogspot.com/-qCVx05ST8xA/UKvC7J4UOaI/AAAAAAAAEkM/v-IE7iLiEXU/s1600/kada3.jpg"
+                    alt="Customer Commitment"
+                    className="w-full h-64 object-cover rounded-lg"
+                  />
+                  <div className="text-center mt-4">
+                    <h3 className="text-2xl font-bold text-charcoal-900 mb-2 drop-shadow-lg">
+                      Your Trust, Our Promise
+                    </h3>
+                    <p className="text-ivory-600">
+                      We cherish our customers, delivering honesty and care in
+                      every interaction.
                     </p>
                   </div>
                 </div>
-                <div style={{
-                  opacity: isVisible ? 1 : 0,
-                  transform: isVisible ? 'translateY(0)' : 'translateY(30px)',
-                  transition: 'all 1s ease-out 2.2s'
-                }}>
-                  <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6 drop-shadow-lg">
-                    🧑‍🤝‍🧑 Our Community
+                <div
+                  style={{
+                    opacity: isVisible ? 1 : 0,
+                    transform: isVisible
+                      ? 'translateY(0)'
+                      : 'translateY(30px)',
+                    transition: 'all 1s ease-out 1.6s',
+                  }}
+                >
+                  <h2 className="text-3xl sm:text-4xl font-bold text-charcoal-900 mb-6 drop-shadow-lg">
+                    Our <span className="text-gold-500">Commitment</span>
                   </h2>
-                  <p className="text-lg text-white mb-6 leading-relaxed">
-                    ExtendEase is more than just a marketplace—it's a hub for collaboration, feedback, and discovery. 
-                    Whether you're a seasoned developer looking for niche tools, or an indie creator seeking visibility 
-                    for your first extension, you'll find your place here.
+                  <p className="text-lg text-ivory-600 mb-6 leading-relaxed">
+                    At LUXE JEWELS, jewelry is more than an accessory—it’s a
+                    reflection of personality, memories, and milestones. We are
+                    dedicated to exceeding expectations with unparalleled
+                    quality and personalized service.
                   </p>
-                  <p className="text-lg text-white mb-6 leading-relaxed">
-                    We believe in the <em>open-source spirit</em>, the power of <strong>developer feedback</strong>, 
-                    and the value of <strong>accessible innovation</strong>.
+                  <p className="text-lg text-ivory-600 mb-6 leading-relaxed">
+                    Driven by <em>honesty</em> and <em>trust</em>, we create
+                    pieces that inspire confidence, elegance, and joy for every
+                    occasion.
                   </p>
                 </div>
-              </div>
-            </div>
-          </section>
-
-          {/* Roadmap Section */}
-          <section className="py-16 px-6 sm:px-8 lg:px-12 bg-black/10">
-            <div className="max-w-7xl mx-auto">
-              <div className="text-center mb-16" style={{
-                opacity: isVisible ? 1 : 0,
-                transform: isVisible ? 'translateY(0)' : 'translateY(30px)',
-                transition: 'all 1s ease-out 2.4s'
-              }}>
-                <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6 drop-shadow-lg">
-                  🌱 Looking Ahead
-                </h2>
-                <p className="text-xl text-white max-w-3xl mx-auto">
-                  Our roadmap includes exciting features that will make ExtendEase even more powerful and user-friendly.
-                </p>
-              </div>
-
-              <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <div className="text-center" style={{
-                  opacity: isVisible ? 1 : 0,
-                  transform: isVisible ? 'translateY(0)' : 'translateY(30px)',
-                  transition: 'all 1s ease-out 2.6s'
-                }}>
-                  <div className="bg-indigo-500/20 backdrop-blur-sm border border-indigo-500/30 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <span className="text-2xl">🎯</span>
-                  </div>
-                  <h3 className="text-lg font-semibold text-white mb-2 drop-shadow-lg">Personalized Recommendations</h3>
-                  <p className="text-white">AI-powered extension suggestions based on your coding patterns</p>
-                </div>
-
-                <div className="text-center" style={{
-                  opacity: isVisible ? 1 : 0,
-                  transform: isVisible ? 'translateY(0)' : 'translateY(30px)',
-                  transition: 'all 1s ease-out 2.8s'
-                }}>
-                  <div className="bg-blue-500/20 backdrop-blur-sm border border-blue-500/30 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <span className="text-2xl">📊</span>
-                  </div>
-                  <h3 className="text-lg font-semibold text-white mb-2 drop-shadow-lg">Real-time Analytics</h3>
-                  <p className="text-white">In-depth analytics dashboards for publishers and developers</p>
-                </div>
-
-                <div className="text-center" style={{
-                  opacity: isVisible ? 1 : 0,
-                  transform: isVisible ? 'translateY(0)' : 'translateY(30px)',
-                  transition: 'all 1s ease-out 3.0s'
-                }}>
-                  <div className="bg-green-500/20 backdrop-blur-sm border border-green-500/30 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <span className="text-2xl">🔌</span>
-                  </div>
-                  <h3 className="text-lg font-semibold text-white mb-2 drop-shadow-lg">API Integration</h3>
-                  <p className="text-white">Real-time data integration via powerful APIs</p>
-                </div>
-
-                <div className="text-center" style={{
-                  opacity: isVisible ? 1 : 0,
-                  transform: isVisible ? 'translateY(0)' : 'translateY(30px)',
-                  transition: 'all 1s ease-out 3.2s'
-                }}>
-                  <div className="bg-yellow-500/20 backdrop-blur-sm border border-yellow-500/30 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <span className="text-2xl">🚀</span>
-                  </div>
-                  <h3 className="text-lg font-semibold text-white mb-2 drop-shadow-lg">And Much More</h3>
-                  <p className="text-white">Continuous improvements and new features based on community feedback</p>
-                </div>
-              </div>
-
-              <div className="text-center mt-12" style={{
-                opacity: isVisible ? 1 : 0,
-                transform: isVisible ? 'translateY(0)' : 'translateY(30px)',
-                transition: 'all 1s ease-out 3.4s'
-              }}>
-                <p className="text-lg text-white">
-                  We're just getting started—and we're excited to build the future of extension sharing with <strong className="text-indigo-200">you</strong>.
-                </p>
               </div>
             </div>
           </section>
 
           {/* Contact Section */}
-          <section className="py-16 px-6 sm:px-8 lg:px-12 bg-black/20 backdrop-blur-sm">
-            <div className="max-w-4xl mx-auto text-center" style={{
-              opacity: isVisible ? 1 : 0,
-              transform: isVisible ? 'translateY(0)' : 'translateY(30px)',
-              transition: 'all 1s ease-out 3.6s'
-            }}>
-              <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6 drop-shadow-lg">
-                📬 Get in Touch
+          <section className="py-16 px-6 sm:px-8 lg:px-12 bg-ivory-50">
+            <div
+              className="max-w-4xl mx-auto text-center"
+              style={{
+                opacity: isVisible ? 1 : 0,
+                transform: isVisible ? 'translateY(0)' : 'translateY(30px)',
+                transition: 'all 1s ease-out 1.8s',
+              }}
+            >
+              <h2 className="text-3xl sm:text-4xl font-bold text-charcoal-900 mb-6 drop-shadow-lg">
+                Get in Touch
               </h2>
-              <p className="text-xl text-white mb-8">
-                Have questions, feedback, or suggestions? We'd love to hear from you.
+              <p className="text-xl text-ivory-600 mb-8">
+                Have questions or need assistance? Our team is here to make
+                your jewelry journey exceptional.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link 
-                  href="/contact" 
-                  className="inline-flex items-center justify-center px-8 py-3 bg-indigo-600 text-white font-semibold rounded-full hover:bg-indigo-700 transition-colors shadow-lg"
+                <Link
+                  href="/contact"
+                  className="inline-flex items-center justify-center px-8 py-3 bg-gold-500 text-white font-semibold rounded-full hover:bg-gold-600 transition-colors shadow-lg"
                 >
                   Contact Us
                 </Link>
-                <a 
-                  href="mailto:support@extendease.dev" 
-                  className="inline-flex items-center justify-center px-8 py-3 border-2 border-indigo-400 text-indigo-200 font-semibold rounded-full hover:bg-indigo-600 hover:text-white transition-colors"
+                <a
+                  href="mailto:support@luxejewels.in"
+                  className="inline-flex items-center justify-center px-8 py-3 border-2 border-gold-500 text-gold-500 font-semibold rounded-full hover:bg-gold-500 hover:text-white transition-colors"
                 >
                   Email Support
                 </a>
               </div>
-              <p className="text-white mt-6">
-                Reach out via our <Link href="/contact" className="text-indigo-200 hover:underline">Contact page</Link> or email us at{' '}
-                <a href="mailto:support@extendease.dev" className="text-indigo-200 hover:underline font-semibold">
-                  support@extendease.dev
+              <p className="text-ivory-600 mt-6">
+                Visit our{' '}
+                <Link
+                  href="/contact"
+                  className="text-gold-500 hover:underline"
+                >
+                  Contact page
+                </Link>{' '}
+                or email us at{' '}
+                <a
+                  href="mailto:support@luxejewels.in"
+                  className="text-gold-500 hover:underline font-semibold"
+                >
+                  support@luxejewels.in
                 </a>
               </p>
+            </div>
+          </section>
+
+          {/* Trust Signals */}
+          <section className="py-16 px-6 sm:px-8 lg:px-12 bg-white">
+            <div className="max-w-7xl mx-auto text-center">
+              <h2 className="text-3xl sm:text-4xl font-bold text-charcoal-900 mb-12 drop-shadow-lg">
+                Trusted by Thousands
+              </h2>
+              <div className="flex justify-center gap-6">
+                <img
+                  src="https://www.gia.edu/images/gia-logo.png"
+                  alt="GIA Certified"
+                  className="h-12 w-auto object-contain"
+                  onError={(e) => {
+                    e.target.src =
+                      'https://via.placeholder.com/150x50?text=GIA+Certified';
+                  }}
+                />
+                <img
+                  src="https://via.placeholder.com/150x50/333333/FFFFFF?text=Trusted+Brand"
+                  alt="Trusted Brand"
+                  className="h-12 w-auto object-contain"
+                />
+              </div>
             </div>
           </section>
         </div>

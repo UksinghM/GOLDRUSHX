@@ -1,13 +1,19 @@
 'use client';
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react"; // Added useEffect for debugging
 import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 
 const Navbar = () => {
   const [showDropdown, setShowDropdown] = useState(false);
   const router = useRouter();
 
+  // Debug multiple renders
+  useEffect(() => {
+    console.log('Navbar rendered');
+  }, []);
+
   return (
-    <nav className="bg-white text-gray-800 px-4 sm:px-8 py-4 shadow-md sticky top-0 z-50">
+    <nav className="bg-ivory-50 text-charcoal-900 px-4 sm:px-8 py-4 shadow-md sticky top-0 z-50">
       <div className="flex flex-col md:flex-row items-center justify-between w-full gap-4 max-w-7xl mx-auto">
         {/* Logo */}
         <div className="flex items-center gap-3 cursor-pointer" onClick={() => router.push('/')}>
@@ -16,14 +22,20 @@ const Navbar = () => {
             alt="LUXE JEWELS"
             className="h-10 w-10"
           />
-          <span className="font-serif text-2xl font-bold text-amber-600 tracking-tight">LUXE JEWELS</span>
+          <span className="font-serif text-2xl font-bold text-gold-500 tracking-tight">LUXE JEWELS</span>
         </div>
 
         {/* Navigation Links */}
         <div className="flex-1 flex flex-wrap gap-4 md:gap-6 items-center justify-center py-2">
-          <a href="/" className="font-serif text-base hover:text-amber-500 transition">Home</a>
-          <a href="/collections" className="font-serif text-base hover:text-amber-500 transition">Collections</a>
-          <a href="/bespoke" className="font-serif text-base hover:text-amber-500 transition">Bespoke</a>
+          <Link href="/" className="font-serif text-base hover:text-amber-500 transition">
+            Home
+          </Link>
+          <Link href="/collections" className="font-serif text-base hover:text-amber-500 transition">
+            Collections
+          </Link>
+          <Link href="/bespoke" className="font-serif text-base hover:text-amber-500 transition">
+            Bespoke
+          </Link>
           {/* Jewelry Categories Dropdown */}
           <div
             className="relative"
@@ -37,54 +49,58 @@ const Navbar = () => {
               </svg>
             </button>
             {showDropdown && (
-              <div className="absolute left-0 mt-2 w-80 bg-white text-gray-800 rounded-lg shadow-xl z-10 grid grid-cols-2 gap-2 p-4">
+              <div className="absolute left-0 mt-2 w-80 bg-ivory-50 text-charcoal-900 rounded-lg shadow-xl z-10 grid grid-cols-2 gap-2 p-4">
                 {/* Necklaces Submenu */}
                 <div className="col-span-1">
-                  <p className="font-serif text-sm font-bold text-amber-600 px-4 py-2">Necklaces</p>
-                  <a href="/categories/necklaces" className="block px-4 py-2 font-serif text-sm hover:bg-amber-50 hover:text-amber-500">All Necklaces</a>
-                  <a href="/categories/necklaces/pendant" className="block px-4 py-2 font-serif text-sm hover:bg-amber-50 hover:text-amber-500">Pendant Necklaces</a>
-                  <a href="/categories/necklaces/choker" className="block px-4 py-2 font-serif text-sm hover:bg-amber-50 hover:text-amber-500">Choker Necklaces</a>
-                  <a href="/categories/necklaces/layered" className="block px-4 py-2 font-serif text-sm hover:bg-amber-50 hover:text-amber-500">Layered Necklaces</a>
-                  <a href="/categories/necklaces/statement" className="block px-4 py-2 font-serif text-sm hover:bg-amber-50 hover:text-amber-500">Statement Necklaces</a>
-                  <a href="/categories/necklaces/chains" className="block px-4 py-2 font-serif text-sm hover:bg-amber-50 hover:text-amber-500">Chains</a>
-                  <a href="/categories/necklaces/pearl" className="block px-4 py-2 font-serif text-sm hover:bg-amber-50 hover:text-amber-500">Pearl Necklaces</a>
-                  <a href="/categories/necklaces/lariat" className="block px-4 py-2 font-serif text-sm hover:bg-amber-50 hover:text-amber-500">Lariat Necklaces</a>
-                  <a href="/categories/necklaces/religious" className="block px-4 py-2 font-serif text-sm hover:bg-amber-50 hover:text-amber-500">Religious/Symbolic</a>
-                  <p className="font-serif text-sm font-bold text-amber-600 px-4 py-2 mt-2">By Metal</p>
-                  <a href="/categories/necklaces/metal/gold" className="block px-4 py-2 font-serif text-sm hover:bg-amber-50 hover:text-amber-500">Gold</a>
-                  <a href="/categories/necklaces/metal/silver" className="block px-4 py-2 font-serif text-sm hover:bg-amber-50 hover:text-amber-500">Silver</a>
-                  <a href="/categories/necklaces/metal/rose-gold" className="block px-4 py-2 font-serif text-sm hover:bg-amber-50 hover:text-amber-500">Rose Gold</a>
-                  <a href="/categories/necklaces/metal/platinum" className="block px-4 py-2 font-serif text-sm hover:bg-amber-50 hover:text-amber-500">Platinum</a>
+                  <p className="font-serif text-sm font-bold text-gold-500 px-4 py-2">Necklaces</p>
+                  <Link href="/categories/necklaces" className="block px-4 py-2 font-serif text-sm hover:bg-ivory-100 hover:text-amber-500">All Necklaces</Link>
+                  <Link href="/categories/necklaces/pendant" className="block px-4 py-2 font-serif text-sm hover:bg-ivory-100 hover:text-amber-500">Pendant Necklaces</Link>
+                  <Link href="/categories/necklaces/choker" className="block px-4 py-2 font-serif text-sm hover:bg-ivory-100 hover:text-amber-500">Choker Necklaces</Link>
+                  <Link href="/categories/necklaces/layered" className="block px-4 py-2 font-serif text-sm hover:bg-ivory-100 hover:text-amber-500">Layered Necklaces</Link>
+                  <Link href="/categories/necklaces/statement" className="block px-4 py-2 font-serif text-sm hover:bg-ivory-100 hover:text-amber-500">Statement Necklaces</Link>
+                  <Link href="/categories/necklaces/chains" className="block px-4 py-2 font-serif text-sm hover:bg-ivory-100 hover:text-amber-500">Chains</Link>
+                  <Link href="/categories/necklaces/pearl" className="block px-4 py-2 font-serif text-sm hover:bg-ivory-100 hover:text-amber-500">Pearl Necklaces</Link>
+                  <Link href="/categories/necklaces/lariat" className="block px-4 py-2 font-serif text-sm hover:bg-ivory-100 hover:text-amber-500">Lariat Necklaces</Link>
+                  <Link href="/categories/necklaces/religious" className="block px-4 py-2 font-serif text-sm hover:bg-ivory-100 hover:text-amber-500">Religious/Symbolic</Link>
+                  <p className="font-serif text-sm font-bold text-gold-500 px-4 py-2 mt-2">By Metal</p>
+                  <Link href="/categories/necklaces/metal/gold" className="block px-4 py-2 font-serif text-sm hover:bg-ivory-100 hover:text-amber-500">Gold</Link>
+                  <Link href="/categories/necklaces/metal/silver" className="block px-4 py-2 font-serif text-sm hover:bg-ivory-100 hover:text-amber-500">Silver</Link>
+                  <Link href="/categories/necklaces/metal/rose-gold" className="block px-4 py-2 font-serif text-sm hover:bg-ivory-100 hover:text-amber-500">Rose Gold</Link>
+                  <Link href="/categories/necklaces/metal/platinum" className="block px-4 py-2 font-serif text-sm hover:bg-ivory-100 hover:text-amber-500">Platinum</Link>
                 </div>
                 <div className="col-span-1">
-                  <p className="font-serif text-sm font-bold text-amber-600 px-4 py-2">By Stone</p>
-                  <a href="/categories/necklaces/stone/diamonds" className="block px-4 py-2 font-serif text-sm hover:bg-amber-50 hover:text-amber-500">Diamonds</a>
-                  <a href="/categories/necklaces/stone/pearls" className="block px-4 py-2 font-serif text-sm hover:bg-amber-50 hover:text-amber-500">Pearls</a>
-                  <a href="/categories/necklaces/stone/colored-stones" className="block px-4 py-2 font-serif text-sm hover:bg-amber-50 hover:text-amber-500">Colored Stones</a>
-                  <p className="font-serif text-sm font-bold text-amber-600 px-4 py-2 mt-2">By Occasion</p>
-                  <a href="/categories/necklaces/occasion/everyday" className="block px-4 py-2 font-serif text-sm hover:bg-amber-50 hover:text-amber-500">Everyday</a>
-                  <a href="/categories/necklaces/occasion/wedding" className="block px-4 py-2 font-serif text-sm hover:bg-amber-50 hover:text-amber-500">Wedding</a>
-                  <a href="/categories/necklaces/occasion/party" className="block px-4 py-2 font-serif text-sm hover:bg-amber-50 hover:text-amber-500">Party</a>
-                  <a href="/categories/necklaces/occasion/gifting" className="block px-4 py-2 font-serif text-sm hover:bg-amber-50 hover:text-amber-500">Gifting</a>
-                  <p className="font-serif text-sm font-bold text-amber-600 px-4 py-2 mt-2">By Style</p>
-                  <a href="/categories/necklaces/style/traditional" className="block px-4 py-2 font-serif text-sm hover:bg-amber-50 hover:text-amber-500">Traditional</a>
-                  <a href="/categories/necklaces/style/contemporary" className="block px-4 py-2 font-serif text-sm hover:bg-amber-50 hover:text-amber-500">Contemporary</a>
-                  <a href="/categories/necklaces/style/minimalist" className="block px-4 py-2 font-serif text-sm hover:bg-amber-50 hover:text-amber-500">Minimalist</a>
-                  <a href="/categories/necklaces/style/boho" className="block px-4 py-2 font-serif text-sm hover:bg-amber-50 hover:text-amber-500">Boho</a>
+                  <p className="font-serif text-sm font-bold text-gold-500 px-4 py-2">By Stone</p>
+                  <Link href="/categories/necklaces/stone/diamonds" className="block px-4 py-2 font-serif text-sm hover:bg-ivory-100 hover:text-amber-500">Diamonds</Link>
+                  <Link href="/categories/necklaces/stone/pearls" className="block px-4 py-2 font-serif text-sm hover:bg-ivory-100 hover:text-amber-500">Pearls</Link>
+                  <Link href="/categories/necklaces/stone/colored-stones" className="block px-4 py-2 font-serif text-sm hover:bg-ivory-100 hover:text-amber-500">Colored Stones</Link>
+                  <p className="font-serif text-sm font-bold text-gold-500 px-4 py-2 mt-2">By Occasion</p>
+                  <Link href="/categories/necklaces/occasion/everyday" className="block px-4 py-2 font-serif text-sm hover:bg-ivory-100 hover:text-amber-500">Everyday</Link>
+                  <Link href="/categories/necklaces/occasion/wedding" className="block px-4 py-2 font-serif text-sm hover:bg-ivory-100 hover:text-amber-500">Wedding</Link>
+                  <Link href="/categories/necklaces/occasion/party" className="block px-4 py-2 font-serif text-sm hover:bg-ivory-100 hover:text-amber-500">Party</Link>
+                  <Link href="/categories/necklaces/occasion/gifting" className="block px-4 py-2 font-serif text-sm hover:bg-ivory-100 hover:text-amber-500">Gifting</Link>
+                  <p className="font-serif text-sm font-bold text-gold-500 px-4 py-2 mt-2">By Style</p>
+                  <Link href="/categories/necklaces/style/traditional" className="block px-4 py-2 font-serif text-sm hover:bg-ivory-100 hover:text-amber-500">Traditional</Link>
+                  <Link href="/categories/necklaces/style/contemporary" className="block px-4 py-2 font-serif text-sm hover:bg-ivory-100 hover:text-amber-500">Contemporary</Link>
+                  <Link href="/categories/necklaces/style/minimalist" className="block px-4 py-2 font-serif text-sm hover:bg-ivory-100 hover:text-amber-500">Minimalist</Link>
+                  <Link href="/categories/necklaces/style/boho" className="block px-4 py-2 font-serif text-sm hover:bg-ivory-100 hover:text-amber-500">Boho</Link>
                 </div>
                 {/* Other Categories */}
-                <div className="col-span-2 border-t border-gray-200 mt-2 pt-2">
-                  <a href="/categories/rings" className="block px-4 py-2 font-serif text-sm hover:bg-amber-50 hover:text-amber-500">Rings</a>
-                  <a href="/categories/earrings" className="block px-4 py-2 font-serif text-sm hover:bg-amber-50 hover:text-amber-500">Earrings</a>
-                  <a href="/categories/bracelets" className="block px-4 py-2 font-serif text-sm hover:bg-amber-50 hover:text-amber-500">Bracelets</a>
-                  <a href="/promotions" className="block px-4 py-2 font-serif text-sm text-amber-600 hover:bg-amber-50">Special Offers</a>
-                  <a href="/gift-cards" className="block px-4 py-2 font-serif text-sm text-amber-600 hover:bg-amber-50">Gift Cards</a>
+                <div className="col-span-2 border-t border-ivory-200 mt-2 pt-2">
+                  <Link href="/categories/rings" className="block px-4 py-2 font-serif text-sm hover:bg-ivory-100 hover:text-amber-500">Rings</Link>
+                  <Link href="/categories/earrings" className="block px-4 py-2 font-serif text-sm hover:bg-ivory-100 hover:text-amber-500">Earrings</Link>
+                  <Link href="/categories/bracelets" className="block px-4 py-2 font-serif text-sm hover:bg-ivory-100 hover:text-amber-500">Bracelets</Link>
+                  <Link href="/promotions" className="block px-4 py-2 font-serif text-sm text-gold-500 hover:bg-ivory-100">Special Offers</Link>
+                  <Link href="/gift-cards" className="block px-4 py-2 font-serif text-sm text-gold-500 hover:bg-ivory-100">Gift Cards</Link>
                 </div>
               </div>
             )}
           </div>
-          <a href="/about" className="font-serif text-base hover:text-amber-500 transition">About</a>
-          <a href="/contact" className="font-serif text-base hover:text-amber-500 transition">Contact</a>
+          <Link href="/about-us" className="font-serif text-base hover:text-amber-500 transition">
+            About
+          </Link>
+          <Link href="/contact" className="font-serif text-base hover:text-amber-500 transition">
+            Contact
+          </Link>
         </div>
 
         {/* Search Bar */}
@@ -93,9 +109,9 @@ const Navbar = () => {
             type="text"
             name="search"
             placeholder="Search Luxe Jewels"
-            className="w-full px-4 py-2 rounded-l-md text-gray-800 bg-gray-100 focus:outline-none focus:ring-2 focus:ring-amber-400 text-base font-serif"
+            className="w-full px-4 py-2 rounded-l-md text-charcoal-900 bg-ivory-100 focus:outline-none focus:ring-2 focus:ring-gold-500 text-base font-serif"
           />
-          <button className="bg-amber-500 hover:bg-amber-600 px-4 py-2 rounded-r-md" type="submit">
+          <button className="bg-gold-500 hover:bg-gold-600 px-4 py-2 rounded-r-md" type="submit">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -111,8 +127,10 @@ const Navbar = () => {
 
         {/* Right Side: Account & Cart */}
         <div className="flex items-center gap-4 mt-2 md:mt-0">
-          <a href="/account" className="font-serif text-base hover:text-amber-500 transition">Account</a>
-          <a href="/cart" className="relative flex items-center">
+          <Link href="/account" className="font-serif text-base hover:text-amber-500 transition">
+            Account
+          </Link>
+          <Link href="/cart" className="relative flex items-center">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -123,7 +141,7 @@ const Navbar = () => {
             >
               <path strokeLinecap="round" strokeLinejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13l-1.35 2.7A1 1 0 007 17h10a1 1 0 00.95-.68l3.24-7.24A1 1 0 0020 8H6.21" />
             </svg>
-          </a>
+          </Link>
         </div>
       </div>
     </nav>
