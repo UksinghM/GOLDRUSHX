@@ -1,13 +1,17 @@
 const mongoose = require('mongoose');
-require('dotenv').config(); // Load environment variables from .env file
+const url = process.env.DB_URL || 'mongodb://localhost:27017/extendease';
 
-const url = process.env.DB_URL;
+mongoose.connect(url, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+})
+  .then(() => console.log('Connected to MongoDB'))
+  .catch(err => console.error('MongoDB connection error:', err));
 
-mongoose.connect(url)
-    .then((result) => {
-        console.log('Connected to MongoDB');
-    }).catch((err) => {
-        console.log(err);
-    });
+process.on('SIGINT', async () => {
+  await mongoose.disconnect();
+  console.log('Disconnected from MongoDB');
+  process.exit(0);
+});
 
 module.exports = mongoose;
